@@ -22,7 +22,5 @@
             '';
           };
         };
-
-        formatter = pkgs.nixpkgs-fmt;
       });
 }

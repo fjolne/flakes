@@ -60,7 +60,5 @@
             '';
           };
         };
-
-        formatter = pkgs.nixpkgs-fmt;
       });
 }
