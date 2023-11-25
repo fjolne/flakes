@@ -20,6 +20,7 @@
                 clojure
                 clojure-lsp
                 babashka
+                neil
                 just
               ];
           };
