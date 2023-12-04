@@ -20,6 +20,8 @@
                 clojure
                 # NB: already supplied by Calva
                 # clojure-lsp
+                # NB: also supplied by Calva, but we need to import configs
+                clj-kondo
                 babashka
                 neil
                 just
