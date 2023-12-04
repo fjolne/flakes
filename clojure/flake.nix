@@ -18,7 +18,8 @@
               [
                 jdk21
                 clojure
-                clojure-lsp
+                # NB: already supplied by Calva
+                # clojure-lsp
                 babashka
                 neil
                 just
