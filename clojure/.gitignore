@@ -2,3 +2,5 @@
 .cpcache
 .clj-kondo/.cache
 .lsp/.cache
+.calva
+.nrepl-port
