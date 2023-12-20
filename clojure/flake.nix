@@ -16,12 +16,9 @@
           default = pkgs.mkShell {
             packages = with pkgs;
               [
-                jdk21
-                clojure
-                # NB: already supplied by Calva
-                # clojure-lsp
-                # NB: also supplied by Calva, but we need to import configs
-                clj-kondo
+                clojure     # latest JDK automatically selected
+                clojure-lsp # supplied by Calva, so we don't need it
+                clj-kondo   # supplied by Calva, but we need it to import configs
                 babashka
                 neil
                 just
