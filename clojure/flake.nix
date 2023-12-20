@@ -16,12 +16,12 @@
           default = pkgs.mkShell {
             packages = with pkgs;
               [
+                babashka
+                clj-kondo   # supplied by Calva, but we need it to import configs
                 clojure     # latest JDK automatically selected
                 clojure-lsp # supplied by Calva, so we don't need it
-                clj-kondo   # supplied by Calva, but we need it to import configs
-                babashka
-                neil
                 just
+                neil
               ];
           };
         };
