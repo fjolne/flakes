@@ -9,6 +9,11 @@
         description = "Kaggle template, using poetry2nix";
       };
 
+      python-cuda = {
+        path = ./python-cuda;
+        description = "Python CUDA template, using nixpkgs";
+      };
+
       clojure = {
         path = ./clojure;
         description = "Clojure template, using deps.edn";
