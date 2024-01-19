@@ -14,7 +14,9 @@
       {
         devShells = {
           default = pkgs.mkShell {
-            packages = [ ];
+            packages = with pkgs; [
+              # add packages here
+            ];
             shellHook = ''
               echo hello
             '';
