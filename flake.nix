@@ -4,6 +4,11 @@
   outputs = { self }: {
 
     templates = {
+      minimal = {
+        path = ./minimal;
+        description = "Minimal template";
+      };
+
       kaggle = {
         path = ./kaggle;
         description = "Kaggle template, using poetry2nix";
