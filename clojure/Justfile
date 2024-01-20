@@ -2,7 +2,6 @@ ps:
     clj --version
 
 init:
-    neil new scratch $(basename $(pwd)) . --overwrite
     git init
     git add .
     git commit -m init
