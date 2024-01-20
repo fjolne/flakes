@@ -15,7 +15,7 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ poetry2nix.overlay ];
+          overlays = [ poetry2nix.overlays.default ];
           # config.permittedInsecurePackages = [ "openssl-1.1.1u" ];
         };
         python = pkgs.python311;
