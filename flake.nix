@@ -23,6 +23,11 @@
         path = ./clojure;
         description = "Clojure template, using deps.edn";
       };
+
+      typescript = {
+        path = ./typescript;
+        description = "Typescript template, using npm";
+      };
     };
 
     defaultTemplate = self.templates.kaggle;
