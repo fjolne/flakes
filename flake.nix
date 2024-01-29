@@ -28,6 +28,11 @@
         path = ./typescript;
         description = "Typescript template, using npm";
       };
+
+      go = {
+        path = ./go;
+        description = "Golang template";
+      };
     };
 
     defaultTemplate = self.templates.kaggle;
