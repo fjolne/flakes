@@ -16,9 +16,11 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               go_1_20
-              gopls
-              gotools
-              golangci-lint
+              gopls # official language server
+              gotools # goimports
+              golangci-lint # linter
+              delve # debugger
+              go-tools # staticcheck
             ];
           };
         };
