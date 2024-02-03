@@ -34,7 +34,7 @@
             ];
             shellHook = ''
               poetry env use ${python}/bin/python
-              poetry lock
+              poetry install --no-root
             '';
           };
         };
