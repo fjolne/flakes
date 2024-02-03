@@ -34,6 +34,7 @@
             ];
             shellHook = ''
               poetry env use ${python}/bin/python
+              poetry lock
             '';
           };
         };
