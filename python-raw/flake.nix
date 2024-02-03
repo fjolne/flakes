@@ -43,29 +43,3 @@
         };
       });
 }
-
-      # customOverrides = self: super: {
-      #   nvidia-cudnn-cu11 = super.nvidia-cudnn-cu11.overridePythonAttrs (attrs: {
-      #     nativeBuildInputs = attrs.nativeBuildInputs or [ ] ++ [ pkgs.autoPatchelfHook ];
-      #     preFixup = ''
-      #       addAutoPatchelfSearchPath "${self.nvidia-cublas-cu11}/${self.python.sitePackages}/nvidia/cublas/lib"
-      #     '';
-      #     propagatedBuildInputs = attrs.propagatedBuildInputs or [ ] ++ [
-      #       self.nvidia-cublas-cu11
-      #     ];
-      #   });
-
-      #   torch = super.torch.overridePythonAttrs (attrs: {
-      #     nativeBuildInputs = attrs.nativeBuildInputs or [ ] ++ [ pkgs.autoPatchelfHook ];
-      #     buildInputs = attrs.buildInputs or [ ] ++ [
-      #       self.nvidia-cudnn-cu11
-      #       self.nvidia-cuda-nvrtc-cu11
-      #       self.nvidia-cuda-runtime-cu11
-      #     ];
-      #     postInstall = ''
-      #       addAutoPatchelfSearchPath "${self.nvidia-cublas-cu11}/${self.python.sitePackages}/nvidia/cublas/lib"
-      #       addAutoPatchelfSearchPath "${self.nvidia-cudnn-cu11}/${self.python.sitePackages}/nvidia/cudnn/lib"
-      #       addAutoPatchelfSearchPath "${self.nvidia-cuda-nvrtc-cu11}/${self.python.sitePackages}/nvidia/cuda_nvrtc/lib"
-      #     '';
-      #   });
-      # };
