@@ -19,8 +19,6 @@
         python = pkgs.python311;
       in
       {
-        packages = { };
-
         devShells = {
           default = pkgs.mkShell {
             packages = with pkgs; [
