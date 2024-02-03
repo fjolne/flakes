@@ -19,6 +19,11 @@
         description = "Python CUDA template, using nixpkgs";
       };
 
+      python-raw = {
+        path = ./python-raw;
+        description = "Python using raw poetry, with CUDA support";
+      };
+
       clojure = {
         path = ./clojure;
         description = "Clojure template, using deps.edn";
