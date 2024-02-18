@@ -1,37 +1,36 @@
 {
-  nixConfig = {
-    extra-substituters = [
-      "https://cuda-maintainers.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-    ];
-  };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+  inputs.nixpkgs-unfree.url = "github:numtide/nixpkgs-unfree/nixos-23.11";
+  inputs.nixpkgs-unfree.inputs.nixpkgs.follows = "nixpkgs";
+
+  # inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  # inputs.nixpkgs-unfree.url = "github:numtide/nixpkgs-unfree";
+  # inputs.nixpkgs-unfree.inputs.nixpkgs.follows = "nixpkgs";
 
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
-  outputs = { self, nixpkgs, flake-utils }:
+  outputs = { self, nixpkgs, nixpkgs-unfree, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           inherit system;
           config = {
             allowUnfree = true;
-            cudaSupport = system != "aarch64-darwin";
+            cudaSupport = true;
           };
         };
+        # pkgs = nixpkgs-unfree.legacyPackages.${system};
         dirs-to-path = dirs: pkgs.lib.concatStringsSep ":" (map (dir: "$(pwd)/${dir}") dirs);
-        py = (pkgs.python310.withPackages (ps: with ps; [
-          ipykernel
-          jupyter
-          pip
+        py = (pkgs.python311.withPackages (ps: with ps; [
+          # ipykernel
+          # jupyter
+          # pip
 
-          matplotlib
-          numpy
-          pandas
-          polars
-          pyarrow
+          # matplotlib
+          # numpy
+          # pandas
+          # polars
+          # pyarrow
           torch
         ]));
       in
