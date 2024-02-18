@@ -9,9 +9,9 @@
         description = "Minimal template";
       };
 
-      kaggle = {
-        path = ./kaggle;
-        description = "Kaggle template, using poetry2nix";
+      python-poetry2nix = {
+        path = ./python-poetry2nix;
+        description = "Python template, using poetry2nix";
       };
 
       python-cuda = {
