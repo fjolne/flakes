@@ -38,6 +38,11 @@
         path = ./go;
         description = "Golang template";
       };
+
+      zig = {
+        path = ./zig;
+        description = "Zig template";
+      };
     };
 
     defaultTemplate = self.templates.kaggle;
