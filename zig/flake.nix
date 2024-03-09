@@ -1,27 +1,32 @@
 {
-  description = "Minimal template";
-
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    zig.url = "github:mitchellh/zig-overlay";
-    zls.url = "github:zigtools/zls";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     flake-utils.url = "github:numtide/flake-utils";
+
+    zig.url = "github:mitchellh/zig-overlay";
+    zig.inputs.nixpkgs.follows = "nixpkgs";
+
+    zls.url = "github:zigtools/zls";
+    zls.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self, nixpkgs, zig, zls, flake-utils, ... }:
+  outputs = { nixpkgs, zig, zls, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ zig.overlays.default ];
-        };
+        pkgs = nixpkgs.legacyPackages.${system};
+        # crossPkgs = import nixpkgs {
+        #   inherit system;
+        #   crossSystem = { system = "riscv32-none-elf"; };
+        # };
       in
       with pkgs;
       {
         devShells.default = mkShell {
-          buildInputs = with pkgs; [
-            zigpkgs.master
-            zls.outputs.packages.${system}.default
+          buildInputs = [
+            zig.packages.${system}.master
+            zls.packages.${system}.default
+            # pkgs.qemu
+            # crossPkgs.stdenv.cc
           ];
         };
       }
