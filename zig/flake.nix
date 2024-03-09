@@ -2,7 +2,7 @@
   description = "Minimal template";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     zig.url = "github:mitchellh/zig-overlay";
     flake-utils.url = "github:numtide/flake-utils";
   };
@@ -18,8 +18,9 @@
       with pkgs;
       {
         devShells.default = mkShell {
-          buildInputs = [
-            pkgs.zigpkgs.master
+          buildInputs = with pkgs; [
+            zigpkgs."0.11.0"
+            zls
           ];
         };
       }
