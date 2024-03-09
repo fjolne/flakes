@@ -2,12 +2,13 @@
   description = "Minimal template";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     zig.url = "github:mitchellh/zig-overlay";
+    zls.url = "github:zigtools/zls";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, zig, flake-utils, ... }:
+  outputs = inputs @ { self, nixpkgs, zig, zls, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
@@ -19,8 +20,8 @@
       {
         devShells.default = mkShell {
           buildInputs = with pkgs; [
-            zigpkgs."0.11.0"
-            zls
+            zigpkgs.master
+            zls.outputs.packages.${system}.default
           ];
         };
       }
