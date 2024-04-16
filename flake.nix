@@ -21,6 +21,11 @@
 
       python-raw = {
         path = ./python-raw;
+        description = "Python using raw poetry, nothing else";
+      };
+
+      python-raw-cuda = {
+        path = ./python-raw-cuda;
         description = "Python using raw poetry, with CUDA support";
       };
 
