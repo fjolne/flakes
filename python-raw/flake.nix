@@ -14,6 +14,7 @@
               poetry
             ];
             LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [
+              stdenv.cc.cc.lib
               # zlib # numpy
             ];
             shellHook = ''
