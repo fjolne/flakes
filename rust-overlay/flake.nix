@@ -25,9 +25,3 @@
       }
     );
 }
-
-# TODO migrate to rust-overlay+crane:
-# - https://github.com/DeterminateSystems/flake-checker/blob/main/flake.nix
-# - https://github.com/DeterminateSystems/magic-nix-cache/blob/main/flake.nix
-# or to fenix+naersk:
-# - https://github.com/DeterminateSystems/nix-installer/blob/main/flake.nix
