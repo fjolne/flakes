@@ -17,7 +17,9 @@
       {
         devShells.default = mkShell {
           packages = [
-            rust-bin.stable."1.78.0".default
+            (rust-bin.stable."1.78.0".default.override {
+              extensions = [ "rust-src" ];
+            })
           ];
         };
       }
