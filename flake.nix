@@ -34,6 +34,16 @@
         description = "Clojure template, using deps.edn";
       };
 
+      rust-overlay = {
+        path = ./rust-overlay;
+        description = "Rust template, using rust-overlay";
+      };
+
+      rust-nixpkgs = {
+        path = ./rust-nixpkgs;
+        description = "Rust template, using nixpkgs";
+      };
+
       typescript = {
         path = ./typescript;
         description = "Typescript template, using npm";
