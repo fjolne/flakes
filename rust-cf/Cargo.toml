@@ -1,0 +1,10 @@
+[package]
+name = "r948"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "r948"
+path = "src/A.rs"
+
+[dependencies]

@@ -44,6 +44,11 @@
         description = "Rust template, using nixpkgs";
       };
 
+      rust-cf = {
+        path = ./rust-cf;
+        description = "Rust template for Codeforces";
+      };
+
       typescript = {
         path = ./typescript;
         description = "Typescript template, using npm";
