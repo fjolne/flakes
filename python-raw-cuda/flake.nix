@@ -33,6 +33,7 @@
             shellHook = ''
               poetry env use ${python}/bin/python
               poetry install --no-root
+              export PYTHONPATH=$(pwd):$PYTHONPATH;
             '';
           };
         };
