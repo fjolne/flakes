@@ -1,6 +1,4 @@
 {
-  description = "Minimal template";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -12,9 +10,9 @@
         pkgs = import nixpkgs { inherit system; };
       in
       {
-        devShells = {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
+        devShells = with pkgs; {
+          default = mkShell {
+            packages = [
               # add packages here
             ];
             shellHook = ''
