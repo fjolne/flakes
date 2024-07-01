@@ -7,10 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+jupyter = "^1.0.0"
 numpy = "^1.26.3"
 torch = "^2.2.0"
-ipykernel = "^6.29.0"
-
 
 [build-system]
 requires = ["poetry-core"]
