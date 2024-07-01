@@ -1,8 +1,6 @@
 {
-  description = "Python template";
-
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -19,17 +17,19 @@
         python = pkgs.python311;
       in
       {
-        devShells = {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
+        devShells = with pkgs; {
+          default = mkShell {
+            packages = [
               poetry
+              cudaPackages.cudatoolkit
             ];
-            LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [
-              zlib # numpy
-              stdenv.cc.cc.lib # torch
-              addOpenGLRunpath.driverLink # torch.cuda
-              # cudaPackages.libcublas.lib
-            ];
+            LD_LIBRARY_PATH = (lib.makeLibraryPath [
+              zlib
+              stdenv.cc.cc.lib
+              addOpenGLRunpath.driverLink
+              cudaPackages.cudatoolkit
+            ]);
+            CUDA_HOME = cudaPackages.cudatoolkit;
             shellHook = ''
               poetry env use ${python}/bin/python
               poetry install --no-root
