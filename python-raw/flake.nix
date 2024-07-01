@@ -1,24 +1,27 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system}; in
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        python = pkgs.python311;
+      in
       {
-        devShells = {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
+        devShells = with pkgs; {
+          default = mkShell {
+            packages = [
               poetry
             ];
-            LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [
+            LD_LIBRARY_PATH = (lib.makeLibraryPath [
+              zlib
               stdenv.cc.cc.lib
-              # zlib # numpy
-            ];
+            ]);
             shellHook = ''
-              poetry env use ${pkgs.python311}/bin/python
+              poetry env use ${python}/bin/python
               poetry install --no-root
               export PYTHONPATH=$(pwd):$PYTHONPATH;
             '';
